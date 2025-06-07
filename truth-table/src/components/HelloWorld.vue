@@ -1,18 +1,20 @@
-<script lang="ts">
-import { Vue, Options } from 'vue-class-component';
+<script lang="ts" setup>
+import { ref, defineProps } from 'vue';
+import { generateTruthTable } from '../utils/truthTable';
 
-@Options({
-  props: {
-    message: String
-  }
-})
-export default class HelloWorld extends Vue {
-  count = 0;
+const expression = 'A ↔ B';
+const table = generateTruthTable(expression);
 
-  increment() {
-    this.count++;
-  }
-}
+console.log(table.headers); // exemplo: ['A', 'B', '(A and B)']
+console.table(table.rows);
+
+// define a prop
+defineProps<{
+  message: string
+}>();
+
+const count = ref(0);
+const increment = () => count.value++;
 </script>
 
 <template>
