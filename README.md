@@ -18,7 +18,7 @@ cd truth-table
 
 # Backend
 
-> [!INFO]
+> [!NOTE]
 >
 > Para saber mais, veja a ISSUE **[Backend - Sistema Lógico](https://github.com/Baku-Stark/Truth_Table/issues/2)**.
 
@@ -61,7 +61,7 @@ generateTruthTable("(p && q) ⇒ !r")
 // ]
 ```
 
-> [!INFO]
+> [!NOTE]
 > A lógica do backend pode, futuramente, ser exposta via API para integrar com outras interfaces ou aplicações.
 
 # Criadores
