@@ -1,5 +1,3 @@
-// src/utils/truthTable.ts
-
 /**
  * Módulo para geração e manipulação de tabelas verdade lógicas.
  * Oferece funcionalidades para avaliar expressões booleanas e gerar
