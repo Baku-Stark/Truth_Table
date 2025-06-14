@@ -2,7 +2,7 @@
 import { ref, defineProps } from 'vue';
 import { generateTruthTable } from '../utils/truthTable';
 
-const expression = 'A <-> B';
+const expression = 'not (A and B)';
 const table = generateTruthTable(expression);
 
 console.log(table.headers); // exemplo: ['A', 'B', '(A and B)']
