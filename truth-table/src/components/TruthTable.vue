@@ -1,13 +1,11 @@
 <template>
   <div class="p-6 space-y-4">
     <h1 class="text-3xl font-bold">Tabela Verdade</h1>
-
     <input
       v-model="expression"
       class="border px-3 py-2 rounded w-96 dark:bg-gray-800 dark:border-gray-600"
       placeholder="Digite a expressão lógica. Ex: (A ∧ ¬B) ∨ C"
     />
-
     <table class="border-collapse">
       <thead>
         <tr>
@@ -40,14 +38,19 @@ import { ref, watch } from 'vue'
 import { useTruthTable } from '../composables/useTruthTable'
 
 const expression = ref('(A ∧ ¬B) ∨ C')
-
 const headers = ref<string[]>([])
 const truthTable = ref<any[][]>([])
 
 const updateTable = () => {
-  const { headers: h, truthTable: t } = useTruthTable(expression.value)
-  headers.value = h.value
-  truthTable.value = t.value
+  try {
+    const { headers: h, truthTable: t } = useTruthTable(expression.value)
+    headers.value = h.value
+    truthTable.value = t.value
+  } catch (e) {
+    // Se a expressão for inválida, limpa a tabela
+    headers.value = []
+    truthTable.value = []
+  }
 }
 
 watch(expression, updateTable, { immediate: true })
