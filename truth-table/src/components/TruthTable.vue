@@ -19,7 +19,7 @@
             :key="j"
             class="border px-4 py-2 text-center"
           >
-            {{ value ? '✔️' : '❌' }}
+            {{ value ? 'V' : 'F' }}
           </td>
         </tr>
       </tbody>
@@ -29,5 +29,7 @@
 
 <script setup lang="ts">
 import { useTruthTable } from '@/composables/useTruthTable'
-const table = useTruthTable(['A', 'B'])
+
+// Desestruturando a resposta
+const { headers, truthTable } = useTruthTable("¬A ∨ B")
 </script>

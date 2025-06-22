@@ -6,7 +6,7 @@ const operators = {
   '¬': (_: boolean, b: boolean) => !b,
 }
 
-function parseExpression(expr: string, variables: Record<string, boolean>) {
+function parseExpression(expr: string, variables: Record<string, boolean>): boolean {
   const tokens = expr.replace(/\s+/g, '').match(/([A-Z]|¬|∧|∨|\(|\))/g)
   if (!tokens) throw new Error('Expressão inválida')
 
@@ -25,37 +25,40 @@ function parseExpression(expr: string, variables: Record<string, boolean>) {
         stack.length &&
         precedence[stack[stack.length - 1]] >= precedence[token]
       ) {
-        output.push(stack.pop()!)
+        const op = stack.pop()
+        if (op) output.push(op) // 🔧 FIX: WALLACE "BAKU-STARK"
       }
       stack.push(token)
     } else if (token === '(') {
       stack.push(token)
     } else if (token === ')') {
       while (stack.length && stack[stack.length - 1] !== '(') {
-        output.push(stack.pop()!)
+        const op = stack.pop()
+        if (op) output.push(op) // 🔧 FIX: WALLACE "BAKU-STARK"
       }
       stack.pop() // remove '('
     }
   })
 
   while (stack.length) {
-    output.push(stack.pop()!)
+    const op = stack.pop()
+    if (op) output.push(op) // 🔧 FIX: WALLACE "BAKU-STARK"
   }
 
-  const evalStack: (boolean | string)[] = []
+  const evalStack: boolean[] = []
 
   output.forEach((token) => {
     if (typeof token === 'boolean') {
       evalStack.push(token)
     } else if (token === '¬') {
       const b = evalStack.pop()
-      if (typeof b !== 'boolean') throw new Error('Erro de avaliação')
+      if (typeof b !== 'boolean') throw new Error('Erro de avaliação (¬)')
       evalStack.push(operators['¬'](false, b))
     } else if (token === '∧' || token === '∨') {
       const b = evalStack.pop()
       const a = evalStack.pop()
       if (typeof a !== 'boolean' || typeof b !== 'boolean') {
-        throw new Error('Erro de avaliação')
+        throw new Error('Erro de avaliação (∧ ou ∨)')
       }
       evalStack.push(operators[token](a, b))
     }
@@ -67,20 +70,23 @@ function parseExpression(expr: string, variables: Record<string, boolean>) {
   return result
 }
 
+// 🔧 Novo tipo definido
+type TruthTableRow = (boolean | string)[]
+
 export function useTruthTable(expression: string) {
   const variables = Array.from(new Set(expression.match(/[A-Z]/g))).sort()
 
-  const headers = ref([...variables, expression])
-  const truthTable = ref<any[][]>([])
+  const headers = ref<string[]>([...variables, expression])
+  const truthTable = ref<TruthTableRow[]>([]) // 🔧 FIX: WALLACE "BAKU-STARK"
 
   const totalRows = 2 ** variables.length
 
   const generateTable = () => {
-    const table: any[][] = []
+    const table: TruthTableRow[] = [] // 🔧 FIX: WALLACE "BAKU-STARK"
 
     for (let i = 0; i < totalRows; i++) {
       const rowVars: Record<string, boolean> = {}
-      const row: (boolean | string)[] = []
+      const row: TruthTableRow = [] // 🔧 FIX: WALLACE "BAKU-STARK"
 
       variables.forEach((v, index) => {
         const value = Boolean((i >> (variables.length - index - 1)) & 1)

@@ -8,11 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'feminine-pink': '#ffb6c1',
-        'feminine-lavender': '#d8bfd8',
-        'feminine-rose': '#f9c6d0',
-        'feminine-dark': '#1e1e2f',
-        'feminine-accent': '#ff69b4',
+        
       },
     },
   },
