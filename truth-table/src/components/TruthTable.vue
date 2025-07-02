@@ -5,7 +5,7 @@
     <input
       v-model="expression"
       class="border px-3 py-2 rounded w-96 dark:bg-gray-800 dark:border-gray-600"
-      placeholder="Digite a expressão lógica. Ex: (A ∧ ¬B) ∨ C"
+      placeholder="Digite a expressão lógica. Ex: '(A ∧ ¬B) ∨ C'"
     />
 
     <table class="border-collapse">
@@ -27,7 +27,7 @@
             :key="j"
             class="border px-4 py-2 text-center"
           >
-            {{ value ? 'V' : 'F' }}
+            {{ value ? '✔️' : '❌' }}
           </td>
         </tr>
       </tbody>
@@ -36,7 +36,19 @@
 </template>
 
 <script setup lang="ts">
-import { useTruthTable } from '@/composables/useTruthTable'
+import { ref, watch } from 'vue'
+import { useTruthTable } from '../composables/useTruthTable'
 
-const table = useTruthTable("¬A ∨ B")
+const expression = ref('(A ∧ ¬B) ∨ C')
+
+const headers = ref<string[]>([])
+const truthTable = ref<any[][]>([])
+
+const updateTable = () => {
+  const { headers: h, truthTable: t } = useTruthTable(expression.value)
+  headers.value = h.value
+  truthTable.value = t.value
+}
+
+watch(expression, updateTable, { immediate: true })
 </script>
