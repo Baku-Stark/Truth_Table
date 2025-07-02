@@ -89,4 +89,3 @@ Após a configuração correta, o projeto funciona normalmente e o Tailwind CSS 
 ---
 
 > Desenvolvido com 💻 por **Maria Izabel (Izzy)**
-
