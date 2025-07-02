@@ -37,5 +37,6 @@
 
 <script setup lang="ts">
 import { useTruthTable } from '@/composables/useTruthTable'
-const table = useTruthTable(['A', 'B'])
+
+const table = useTruthTable("¬A ∨ B")
 </script>
