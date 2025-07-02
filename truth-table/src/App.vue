@@ -15,7 +15,7 @@
 
     <!-- Conteúdo centralizado -->
     <main class="flex-1 flex flex-col justify-center items-center">
-      <img alt="Vue logo" src="./assets/img/logo.png" class="w-32 mb-4" />
+      <img alt="Vue logo" src="./assets/logo.png" class="w-32 mb-4" />
       <TruthTable /> <!-- ✅ Aqui usamos o componente -->
     </main>
   </div>
