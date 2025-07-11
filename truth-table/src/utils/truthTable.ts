@@ -90,23 +90,21 @@ function normalizeExpression(expr: string): string {
  * @throws Pode lançar erros de sintaxe se a expressão for inválida
  */
 function evaluateExpression(expr: string, values: Record<string, TruthValue>): TruthValue {
-  // Substitui variáveis por seus valores (true/false)
   let jsExpr = expr.replace(/\b[A-Z]\b/gi, (v) => {
     return values[v.toUpperCase()] === 'T' ? 'true' : 'false';
   });
 
-  // Normaliza e transforma implicações/bicondicionais
   jsExpr = normalizeExpression(jsExpr);
   jsExpr = transformImplications(jsExpr);
 
   try {
-    // Avalia a expressão e converte o resultado para 'T'/'F'
     return eval(jsExpr) ? 'T' : 'F';
   } catch (e) {
-    console.error('Erro ao avaliar:', jsExpr);
-    return 'F'; // Fail-safe: retorna falso em caso de erro
+    console.error('Erro ao avaliar:', jsExpr)
+    throw new Error('Invalid expression') // lança erro aqui
   }
 }
+
 
 /**
  * Transforma implicações (⇒) e bicondicionais (⇔) em expressões equivalentes

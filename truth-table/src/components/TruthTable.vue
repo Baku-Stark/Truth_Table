@@ -71,13 +71,12 @@ const updateTable = () => {
     headers.value = table.headers
     truthTable.value = table.rows
     error.value = null // Limpa o erro se tudo estiver certo
-  } catch (e: string) {
-    error.value = 'Invalid logical expression. Please check the syntax.'
+  } catch (e: unknown) {
+    error.value = `Invalid logical expression. Please check the syntax: ${expression.value}`
     headers.value = []
     truthTable.value = []
   }
 }
-
 
 watch(expression, updateTable, { immediate: true })
 </script>
