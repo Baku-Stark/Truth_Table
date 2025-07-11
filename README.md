@@ -61,7 +61,7 @@ generateTruthTable("(p && q) ⇒ !r")
 // ]
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > A lógica do backend pode, futuramente, ser exposta via API para integrar com outras interfaces ou aplicações.
 
 <details>
