@@ -18,6 +18,16 @@
       <img alt="Vue logo" src="./assets/logo.png" class="w-32 mb-4" />
       <TruthTable /> <!-- ✅ Aqui usamos o componente -->
     </main>
+
+    <footer class="bg-gray-100 dark:bg-gray-900 text-center py-4 text-sm text-gray-700 dark:text-gray-300 border-t border-gray-300 dark:border-gray-700">
+      <p>Copyright © {{ new Date().getFullYear() }}</p>
+      <p>
+        Desenvolvedores:
+        <a href="https://github.com/Baku-Stark" class="text-blue-600 dark:text-blue-400 hover:underline">Baku-Stark</a>
+        |
+        <a href="https://github.com/sparklezzy" class="text-blue-600 dark:text-blue-400 hover:underline">Sparklezzy</a>
+      </p>
+  </footer>
   </div>
 </template>
 
@@ -29,7 +39,7 @@ import { useTheme } from './composables/useTheme'
 export default defineComponent({
   components: { TruthTable },
   setup() {
-    const { isDark, toggleTheme } = useTheme()
+    const { isDark, toggleTheme } = useTheme();
 
     return {
       isDark,
