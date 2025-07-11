@@ -1,0 +1,25 @@
+/* styles.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cria referências para cores personalizadas, se desejar reutilizá-las */
+@layer base {
+  @reference feminine-pink {
+    color: #ff69b4;
+  }
+  @reference feminine-lavender {
+    color: #E6E6FA;
+  }
+  @reference feminine-rose {
+    color: #FF69B4;
+  }
+}
+
+@layer components {
+  /* Você pode usar @apply ou referências aqui */
+  .feminine-card {
+    @apply bg-gradient-to-r from-feminine-pink via-feminine-lavender to-feminine-rose text-gray-800 dark:text-gray-100 rounded-2xl shadow-lg p-4;
+  }
+}
