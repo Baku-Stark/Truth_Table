@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { generateTruthTable, type TruthRow } from '@/utils/truthTable'
+import { generateTruthTable, type TruthRow } from '../utils/truthTable'
 
 const expression = ref('')
 
