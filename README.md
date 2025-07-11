@@ -68,11 +68,9 @@ generateTruthTable("(p && q) ⇒ !r")
 
 <summary><b>Informações sobre o Frontend</b></summary>
 
-> [!NOTE]
->
-> Para saber mais, veja a ISSUE **[Configuração do Projeto #3](https://github.com/Baku-Stark/Truth_Table/issues/3)**.
-> 
-> Como a página está sendo desenvolvidoa **[Visual e Aparência do Site #4](https://github.com/Baku-Stark/Truth_Table/issues/4)**.
+Para saber mais, veja a ISSUE **[Configuração do Projeto #3](https://github.com/Baku-Stark/Truth_Table/issues/3)**.
+
+Como a página está sendo desenvolvidoa **[Visual e Aparência do Site #4](https://github.com/Baku-Stark/Truth_Table/issues/4)**.
 
 </details>
 
