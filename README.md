@@ -64,6 +64,8 @@ generateTruthTable("(p && q) ⇒ !r")
 > [!IMPORTANT]
 > A lógica do backend pode, futuramente, ser exposta via API para integrar com outras interfaces ou aplicações.
 
+# Frontend
+
 <details>
 
 <summary><b>Informações sobre o Frontend</b></summary>
@@ -73,10 +75,6 @@ Para saber mais, veja a ISSUE **[Configuração do Projeto #3](https://github.co
 Como a página está sendo desenvolvidoa **[Visual e Aparência do Site #4](https://github.com/Baku-Stark/Truth_Table/issues/4)**.
 
 </details>
-
-# Frontend
-
-
 
 # Criadores
 
